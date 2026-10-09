@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloudOps | AWS DevOps Dashboard</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1120;
+  color: #e5e7eb;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 7%;
+  border-bottom: 1px solid #263247;
+}
+.logo { font-size: 23px; font-weight: bold; color: #60a5fa; }
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-left: 22px;
+  font-size: 14px;
+}
+nav a:hover { color: #60a5fa; }
+.hero { padding: 65px 7% 40px; }
+.tag {
+  color: #60a5fa;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+h1 { font-size: clamp(32px, 5vw, 52px); margin: 18px 0; }
+.hero p { color: #94a3b8; line-height: 1.8; max-width: 650px; }
+.btn {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 13px 20px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+}
+section { padding: 25px 7% 45px; }
+h2 { font-size: 25px; }
+.muted { color: #94a3b8; line-height: 1.7; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+.card {
+  background: #111c30;
+  border: 1px solid #29364c;
+  padding: 24px;
+  border-radius: 13px;
+}
+.card h3 { margin-top: 8px; }
+.card p { color: #94a3b8; line-height: 1.6; font-size: 14px; }
+.number { color: #60a5fa; font-size: 28px; }
+.status { color: #fbbf24; font-weight: bold; font-size: 13px; }
+.pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+.stage {
+  flex: 1 1 120px;
+  padding: 18px 10px;
+  text-align: center;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #111c30;
+}
+.stage span { display: block; margin-bottom: 8px; color: #60a5fa; }
+footer {
+  border-top: 1px solid #263247;
+  text-align: center;
+  padding: 25px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  header { padding: 20px 5%; align-items: flex-start; gap: 15px; }
+  nav a { margin-left: 8px; font-size: 12px; }
+  .hero { padding: 45px 5% 25px; }
+  section { padding: 20px 5% 35px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">☁ CloudOps</div>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#infrastructure">AWS</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="overview">
+  <div class="tag">AWS • DEVOPS • AUTOMATION</div>
+  <h1>Cloud deployment.<br>Made simpler.</h1>
+  <p>
+    A learning project demonstrating automated application deployment
+    using GitHub, Jenkins, Docker, Linux and AWS infrastructure.
+  </p>
+  <a class="btn" href="#pipeline">Explore CI/CD Pipeline →</a>
+</section>
+
+<section>
+  <h2>Project Overview</h2>
+  <p class="muted">A single place to understand the deployment workflow.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="number">01</div>
+      <h3>Source Control</h3>
+      <p>Git and GitHub manage application source code and changes.</p>
+    </div>
+    <div class="card">
+      <div class="number">02</div>
+      <h3>CI/CD Automation</h3>
+      <p>Jenkins runs pipeline stages to validate, build and deploy.</p>
+    </div>
+    <div class="card">
+      <div class="number">03</div>
+      <h3>Containerization</h3>
+      <p>Docker packages the website into a portable container.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <h2>CI/CD Pipeline</h2>
+  <p class="muted">The planned deployment flow for this project.</p>
+  <div class="pipeline">
+    <div class="stage"><span>01</span>GitHub</div>
+    <div class="stage"><span>02</span>Jenkins</div>
+    <div class="stage"><span>03</span>Docker</div>
+    <div class="stage"><span>04</span>AWS EC2</div>
+    <div class="stage"><span>05</span>Nginx</div>
+  </div>
+  <div class="card" style="margin-top:22px">
+    <h3>Deployment Status</h3>
+    <p id="deployment-status" class="status">DEMO MODE — NOT YET VERIFIED</p>
+    <p id="last-check" class="muted">Website interface loaded successfully in your browser.</p>
+    <button class="btn" onclick="checkWebsite()">Check Website</button>
+  </div>
+</section>
+
+<section id="infrastructure">
+  <h2>AWS Infrastructure</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>☁ Amazon EC2</h3>
+      <p>Linux virtual machine for hosting the application.</p>
+    </div>
+    <div class="card">
+      <h3>🔐 AWS IAM</h3>
+      <p>Identity and permissions management for AWS services.</p>
+    </div>
+    <div class="card">
+      <h3>📊 CloudWatch</h3>
+      <p>Monitoring and logs for troubleshooting infrastructure.</p>
+    </div>
+    <div class="card">
+      <h3>⚙ Lambda</h3>
+      <p>Optional automation for EC2 start and stop operations.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  CloudOps Dashboard | AWS & DevOps Learning Project
+  <br><br>
+  Built with HTML, CSS and JavaScript
+</footer>
+
+<script>
+function checkWebsite() {
+  document.getElementById("deployment-status").textContent =
+    "WEBSITE UI LOADED";
+  document.getElementById("last-check").textContent =
+    "Checked locally at " + new Date().toLocaleString() +
+    ". AWS deployment is not verified by this check.";
+}
+</script>
+</body>
+</html>
